@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Authorized } from "./Authorized"
-import { Login } from "../pages/Login.jsx"
-import Home from "../pages/Home"
-import { RockForm } from "./RockForm.jsx"
-import { RockList } from "./RockList.jsx"
-import { Register } from '../pages/Register.jsx'
+import { Login } from "../components/auth/Login.jsx"
+import Home from "../pages/Home.jsx"
+import { RockForm } from "../components/forms/RockForm.jsx"
+import { RockList } from "../pages/RockList.jsx"
+import { Register } from '../components/auth/Register.jsx'
 
 
 export const ApplicationViews = () => {
@@ -35,8 +35,9 @@ export const ApplicationViews = () => {
             <Route path="/register" element={<Register />} />
             <Route element={<Authorized />}>
                 <Route path="/" element={<Home />} />
-                <Route path="/allrocks" element={<RockList rocks={rocksState} fetchRocks={fetchRocksFromAPI} />} />
-                <Route path="/create" element={<RockForm fetchRocks={fetchRocksFromAPI} />} />
+               
+                <Route path="/allcharacters" element={<CharacterList rocks={rocksState} fetchRocks={fetchRocksFromAPI} />} />
+                <Route path="/create" element={<CharacterForm fetchRocks={fetchRocksFromAPI} />} />
                 <Route path="/mine" element={<RockList rocks={rocksState} fetchRocks={fetchRocksFromAPI} />} />
             </Route>
         </Routes>
